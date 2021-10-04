@@ -14,7 +14,7 @@ type CancionCreate struct {
 }
 
 type CancionUpdateDto struct {
-	Id       string  `json:"Id"`
+	Id       string  `json:"id"`
 	Nombre   string  `json:"nombre"`
 	Duracion float32 `json:"duracion"`
 	Genero   string  `json:"genero"`

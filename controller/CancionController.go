@@ -21,26 +21,20 @@ func Create(c *gin.Context) {
 		Duracion: dto.Duracion,
 		Genero:   dto.Genero,
 	}
-
 	repository.Create(&entity)
-
 	c.JSON(http.StatusAccepted, nil)
 }
 
 func FindById(c *gin.Context) {
 
 	entity, err := repository.FindById(c.Param("id"))
-
 	if err != nil {
 		c.JSON(http.StatusNoContent, nil)
 	}
-
 	c.JSON(http.StatusOK, gin.H{"data": entity})
-
 }
 
 func FindAll(c *gin.Context) {
-
 	dtos := repository.FindAll()
 	c.JSON(http.StatusOK, gin.H{"data": dtos})
 }
@@ -48,7 +42,6 @@ func FindAll(c *gin.Context) {
 func Update(c *gin.Context) {
 
 	var dto model.CancionUpdateDto
-
 	err := c.ShouldBindJSON(&dto)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
@@ -56,21 +49,17 @@ func Update(c *gin.Context) {
 	}
 
 	err = repository.Update(&dto)
-
 	if err != nil {
 		c.JSON(http.StatusOK, gin.H{"error": err.Error()})
 	}
-
 	c.JSON(http.StatusOK, nil)
 }
 
 func Delete(c *gin.Context) {
 
 	err := repository.Delete(c.Param("id"))
-
 	if err != nil {
 		c.JSON(http.StatusNoContent, nil)
 	}
-
 	c.JSON(http.StatusAccepted, nil)
 }
