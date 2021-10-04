@@ -11,9 +11,18 @@ func Create(entity *model.CancionEntity) {
 	db.Create(&entity)
 }
 
-func FindById() {
+func FindById(id string) (*model.CancionEntity, error) {
 	db := Connect()
 	defer Close(db)
+
+	cancion := model.CancionEntity{}
+
+	if err := db.Where("id = ?", id).First(&cancion).Error; err != nil {
+
+		return &cancion, err
+	}
+
+	return &cancion, nil
 }
 
 func FindAll() []model.CancionEntity {

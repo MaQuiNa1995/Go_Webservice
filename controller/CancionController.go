@@ -29,6 +29,14 @@ func Create(c *gin.Context) {
 
 func FindById(c *gin.Context) {
 
+	cancion, err := repository.FindById(c.Param("id"))
+
+	if err != nil {
+		c.JSON(http.StatusNoContent, nil)
+	}
+
+	c.JSON(http.StatusOK, gin.H{"data": cancion})
+
 }
 
 func FindAll(c *gin.Context) {

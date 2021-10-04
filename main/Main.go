@@ -18,6 +18,7 @@ func main() {
 
 	r.POST(basepath, controller.Create)
 	r.GET(basepath, controller.FindAll)
+	r.GET(basepath+":id", controller.FindById)
 
 	r.Run("localhost:8081")
 }
