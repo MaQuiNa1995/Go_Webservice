@@ -29,33 +29,33 @@ func Create(c *gin.Context) {
 
 func FindById(c *gin.Context) {
 
-	cancion, err := repository.FindById(c.Param("id"))
+	entity, err := repository.FindById(c.Param("id"))
 
 	if err != nil {
 		c.JSON(http.StatusNoContent, nil)
 	}
 
-	c.JSON(http.StatusOK, gin.H{"data": cancion})
+	c.JSON(http.StatusOK, gin.H{"data": entity})
 
 }
 
 func FindAll(c *gin.Context) {
 
-	canciones := repository.FindAll()
-	c.JSON(http.StatusOK, gin.H{"data": canciones})
+	dtos := repository.FindAll()
+	c.JSON(http.StatusOK, gin.H{"data": dtos})
 }
 
 func Update(c *gin.Context) {
 
-	var cancion model.CancionUpdateDto
+	var dto model.CancionUpdateDto
 
-	err := c.ShouldBindJSON(&cancion)
+	err := c.ShouldBindJSON(&dto)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
-	err = repository.Update(&cancion)
+	err = repository.Update(&dto)
 
 	if err != nil {
 		c.JSON(http.StatusOK, gin.H{"error": err.Error()})

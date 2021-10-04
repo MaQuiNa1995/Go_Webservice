@@ -14,7 +14,7 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{"data": "hello world"})
 	})
 
-	basepath := "/canciones"
+	basepath := "/cancion"
 
 	r.POST(basepath, controller.Create)
 	r.GET(basepath, controller.FindAll)
