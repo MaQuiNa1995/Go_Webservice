@@ -20,6 +20,7 @@ func main() {
 	r.GET(basepath, controller.FindAll)
 	r.GET(basepath+":id", controller.FindById)
 	r.PATCH(basepath, controller.Update)
+	r.DELETE(basepath, controller.Delete)
 
 	r.Run("localhost:8081")
 }

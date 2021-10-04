@@ -15,14 +15,14 @@ func FindById(id string) (*model.CancionEntity, error) {
 	db := Connect()
 	defer Close(db)
 
-	cancion := model.CancionEntity{}
+	entity := model.CancionEntity{}
 
-	if err := db.Where("id = ?", id).First(&cancion).Error; err != nil {
+	if err := db.Where("id = ?", id).First(&entity).Error; err != nil {
 
-		return &cancion, err
+		return &entity, err
 	}
 
-	return &cancion, nil
+	return &entity, nil
 }
 
 func FindAll() []model.CancionEntity {
@@ -30,26 +30,34 @@ func FindAll() []model.CancionEntity {
 	db := Connect()
 	defer Close(db)
 
-	var canciones []model.CancionEntity
-	db.Find(&canciones)
+	var entities []model.CancionEntity
+	db.Find(&entities)
 
-	return canciones
+	return entities
 }
 
-func Update(cancion *model.CancionUpdateDto) error {
+func Update(dto *model.CancionUpdateDto) error {
 	db := Connect()
 	defer Close(db)
 
-	var cancionDb model.CancionUpdateDto
-	if err := db.Where("id = ?", cancion.Id).First(&cancionDb).Error; err != nil {
+	var entity model.CancionUpdateDto
+	if err := db.Where("id = ?", dto.Id).First(&entity).Error; err != nil {
 		return err
 	}
 
-	db.Model(&cancionDb).Updates(cancion)
+	db.Model(&entity).Updates(dto)
 	return nil
 }
 
-func Delete() {
+func Delete(id string) error {
 	db := Connect()
 	defer Close(db)
+
+	var entity model.CancionUpdateDto
+	if err := db.Where("id = ?", id).First(&entity).Error; err != nil {
+		return err
+	}
+
+	db.Delete(&entity)
+	return nil
 }

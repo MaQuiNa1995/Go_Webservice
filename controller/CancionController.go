@@ -66,4 +66,11 @@ func Update(c *gin.Context) {
 
 func Delete(c *gin.Context) {
 
+	err := repository.Delete(c.Param("id"))
+
+	if err != nil {
+		c.JSON(http.StatusNoContent, nil)
+	}
+
+	c.JSON(http.StatusAccepted, nil)
 }
