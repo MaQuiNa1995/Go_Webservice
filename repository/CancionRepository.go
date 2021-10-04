@@ -36,10 +36,17 @@ func FindAll() []model.CancionEntity {
 	return canciones
 }
 
-func Update() {
+func Update(cancion *model.CancionUpdateDto) error {
 	db := Connect()
 	defer Close(db)
 
+	var cancionDb model.CancionUpdateDto
+	if err := db.Where("id = ?", cancion.Id).First(&cancionDb).Error; err != nil {
+		return err
+	}
+
+	db.Model(&cancionDb).Updates(cancion)
+	return nil
 }
 
 func Delete() {

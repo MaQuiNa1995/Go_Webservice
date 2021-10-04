@@ -47,6 +47,21 @@ func FindAll(c *gin.Context) {
 
 func Update(c *gin.Context) {
 
+	var cancion model.CancionUpdateDto
+
+	err := c.ShouldBindJSON(&cancion)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	err = repository.Update(&cancion)
+
+	if err != nil {
+		c.JSON(http.StatusOK, gin.H{"error": err.Error()})
+	}
+
+	c.JSON(http.StatusOK, nil)
 }
 
 func Delete(c *gin.Context) {

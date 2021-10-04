@@ -19,6 +19,7 @@ func main() {
 	r.POST(basepath, controller.Create)
 	r.GET(basepath, controller.FindAll)
 	r.GET(basepath+":id", controller.FindById)
+	r.PATCH(basepath, controller.Update)
 
 	r.Run("localhost:8081")
 }

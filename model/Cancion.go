@@ -1,20 +1,21 @@
 package model
 
 type CancionEntity struct {
-	Id       uint    `json:"ID" gorm:"primary_key"`
-	Nombre   string  `json:"NOMBRE"`
-	Duracion float32 `json:"DURACION"`
-	Genero   string  `json:"GENERO"`
+	Id       uint    `json:"id" gorm:"primary_key"`
+	Nombre   string  `json:"nombre"`
+	Duracion float32 `json:"duracion"`
+	Genero   string  `json:"genero"`
 }
 
 type CancionCreate struct {
-	Nombre   string  `json:"NOMBRE" binding:"required"`
-	Duracion float32 `json:"DURACION" binding:"required"`
-	Genero   string  `json:"GENERO" binding:"required"`
+	Nombre   string  `json:"nombre" binding:"required"`
+	Duracion float32 `json:"duracion" binding:"required"`
+	Genero   string  `json:"genero" binding:"required"`
 }
 
-type CancionUpdate struct {
-	Nombre   string  `json:"NOMBRE"`
-	Duracion float32 `json:"DURACION"`
-	Genero   string  `json:"GENERO"`
+type CancionUpdateDto struct {
+	Id       string  `json:"Id"`
+	Nombre   string  `json:"nombre"`
+	Duracion float32 `json:"duracion"`
+	Genero   string  `json:"genero"`
 }
