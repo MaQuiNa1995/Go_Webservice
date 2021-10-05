@@ -41,4 +41,4 @@ PS D:\Users\MaQuiNa1995\Workspace\go_workspace\Go_Webservice> go run .\Main.go
 [GIN-debug] Listening and serving HTTP on localhost:8081
 ```
 Tendrás que ir a la siguiente ruta en tu navegador: http://localhost:8081/swagger/index.html para ir a swagger
-o si lo prefieres ejecutar comandos curl para ejecutar los distintos endpoint (las rutas las teneis en el código de arriba)
+o si lo prefieres ejecutar comandos curl apuntanto a los distintos endpoint (las rutas las teneis en el código de arriba)
