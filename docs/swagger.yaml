@@ -1,0 +1,117 @@
+definitions:
+  model.CancionCreateDto:
+    properties:
+      duracion:
+        type: number
+      genero:
+        type: string
+      nombre:
+        type: string
+    required:
+    - duracion
+    - genero
+    - nombre
+    type: object
+  model.CancionEntity:
+    properties:
+      duracion:
+        type: number
+      genero:
+        type: string
+      id:
+        type: integer
+      nombre:
+        type: string
+    type: object
+  model.CancionUpdateDto:
+    properties:
+      duracion:
+        type: number
+      genero:
+        type: string
+      id:
+        type: string
+      nombre:
+        type: string
+    type: object
+info:
+  contact:
+    email: maquina1995@gmail.com
+    name: MaQuiNa1995
+    url: https://github.com/MaQuiNa1995
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+paths:
+  /cancion:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.CancionEntity'
+            type: array
+      summary: Busca todos los registros de la tabla
+    patch:
+      parameters:
+      - description: Dto con los datos necesarios para actualizar por id
+        in: body
+        name: cancion
+        required: true
+        schema:
+          $ref: '#/definitions/model.CancionUpdateDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      summary: Actualiza un registro en Base de datos por id
+    post:
+      parameters:
+      - description: Dto con los datos necesarios para crear una entidad
+        in: body
+        name: cancion
+        required: true
+        schema:
+          $ref: '#/definitions/model.CancionCreateDto'
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: ""
+      summary: Crea un nuevo registro en Base de datos
+  /cancion/{id}:
+    delete:
+      parameters:
+      - description: Id de la base de datos a eliminar
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: ""
+        "204":
+          description: ""
+      summary: Eliminar por Id en Base de datos
+    get:
+      parameters:
+      - description: Id de la entidad a buscar
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.CancionEntity'
+      summary: Buscar por Id en Base de datos
+swagger: "2.0"

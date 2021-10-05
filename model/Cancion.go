@@ -7,7 +7,7 @@ type CancionEntity struct {
 	Genero   string  `json:"genero"`
 }
 
-type CancionCreate struct {
+type CancionCreateDto struct {
 	Nombre   string  `json:"nombre" binding:"required"`
 	Duracion float32 `json:"duracion" binding:"required"`
 	Genero   string  `json:"genero" binding:"required"`

@@ -9,7 +9,7 @@ import (
 )
 
 func Connect() *gorm.DB {
-	db, err := gorm.Open("mysql5", "root:pass@tcp(localhost:3306)/go_application")
+	db, err := gorm.Open("mysql", "root:pass@tcp(localhost:3306)/go_application")
 
 	if err != nil {
 		log.Println("fallo al conectar con la base de datos mas info: ", err)
