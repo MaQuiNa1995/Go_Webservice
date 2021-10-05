@@ -4,7 +4,7 @@ Ejemplo de webservice de nivel 2 con Golang en Gin (Webservice), Swagger y Gorm 
 # Requisitos
 
 ## Servidor MySql
-Hay que tener levantado una base de datos puedes usar el siguiente comando para poner a punto a traves de docer la Base de datos:
+Hay que tener levantado una base de datos puedes usar el siguiente comando para poner a punto a traves de docker la Base de datos:
 ```
 MySQL:`docker run --name mysql5 --hostname mysql5 -v C:\Users\MaQuiNa1995\workspace\docker\mysql-go:/var/lib/mysql --network bridge -e MYSQL_ROOT_PASSWORD=pass -d -p 3306:3306 mysql:5`
 ```
