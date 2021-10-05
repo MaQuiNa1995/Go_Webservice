@@ -3,6 +3,18 @@ Ejemplo de webservice de nivel 2 con Golang en Gin (Webservice), Swagger y Gorm 
 
 # Requisitos
 
+## Librerías Golang
+
+* Swagger
+* MySql
+* Gin
+
+Para descargar las dependencias en la terminal ejecutar los comandos: 
+```
+go get -u github.com/swaggo/swag/cmd/swag
+go get -u github.com/go-sql-driver/mysql
+go get -u github.com/gin-gonic/gin
+```
 ## Servidor MySql
 Hay que tener levantado una base de datos puedes usar el siguiente comando para poner a punto a traves de docker la Base de datos:
 ```
