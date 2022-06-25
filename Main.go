@@ -10,7 +10,7 @@ import (
 	"github.com/swaggo/gin-swagger/swaggerFiles"
 )
 
-const basePath = "/cancion"
+const basePath = "/cancion/"
 
 // @contact.name MaQuiNa1995
 // @contact.url https://github.com/MaQuiNa1995
