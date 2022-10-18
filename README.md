@@ -18,14 +18,13 @@ go get -u github.com/gin-gonic/gin
 ## Servidor MySql
 Hay que tener levantado una base de datos puedes usar el siguiente comando para poner a punto a traves de docker la Base de datos:
 ```
-MySQL:`docker run --name mysql5 --hostname mysql5 -v C:\Users\MaQuiNa1995\workspace\docker\mysql-go:/var/lib/mysql --network bridge -e MYSQL_ROOT_PASSWORD=pass -d -p 3306:3306 mysql:5`
+docker run --name mysql5 --hostname mysql5 -v C:\Users\MaQuiNa1995\workspace\docker\mysql-go:/var/lib/mysql --network bridge -e MYSQL_ROOT_PASSWORD=pass -d -p 3306:3306 mysql:5
 ```
 
 ## Base de datos 
 Se requiere crear la base de datos de la aplicación en nuestro servidor Sql podemos usar a traves de docker el PhpMyAdmin (Las tablas serán auto generadas por Gorm asique no te preocupes por ellas)
-
 ```
-PHPMyAdmin: `docker run --name phpmyadmin --hostname phpmyadmin -d --network bridge -p 8080:80 -e PMA_HOSTS=mysql5 --link mysql5:db -e PMA_VERBOSES="Interna" phpmyadmin/phpmyadmin:latest`
+docker run --name phpmyadmin --hostname phpmyadmin -d --network bridge -p 8080:80 -e PMA_HOSTS=mysql5 --link mysql5:db -e PMA_VERBOSES="Interna" phpmyadmin/phpmyadmin:latest
 ```
 
 # Ejecutar el proyecto
